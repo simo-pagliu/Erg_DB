@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coach Dashboard</title>
+</head>
+<body>
+<h1>Coach Dashboard</h1>
+
+<h2>Mesocycles</h2>
+<ul>
+  {% for mesocycle in mesocycles %}
+  <li>{{ mesocycle.name }} ({{ mesocycle.start_date }} to {{ mesocycle.end_date }})</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('coach.create_mesocycle') }}">Create Mesocycle</a>
+
+<h2>Workout Types</h2>
+<ul>
+  {% for wt in workout_types %}
+  <li>{{ wt.name }} (Mesocycle: {{ wt.mesocycle.name }})</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('coach.create_workout_type') }}">Create Workout Type</a>
+
+<h2>Athletes</h2>
+<ul>
+  {% for athlete in athletes %}
+    <li>{{ athlete.name }} (Year of Birth: {{ athlete.year_of_birth }})</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('coach.create_athlete') }}">Create Athlete</a>
+
+<h2>Workout Sessions</h2>
+<a href="{{ url_for('coach.create_workout_session') }}">Create Workout Session</a>
+
+
+</body>
+</html>

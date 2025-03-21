@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Workout Session</title>
+</head>
+<body>
+<h1>Create Workout Session</h1>
+<form method="post">
+  Date: <input type="date" name="date" required><br>
+
+  Athlete:
+  <select name="athlete_id" required>
+    {% for athlete in athletes %}
+      <option value="{{ athlete.id }}">{{ athlete.name }}</option>
+    {% endfor %}
+  </select><br>
+
+  Workout Type:
+  <select name="workout_type_id" required>
+    {% for wt in workout_types %}
+      <option value="{{ wt.id }}">{{ wt.name }}</option>
+    {% endfor %}
+  </select><br>
+
+  Load Percentage (%): <input type="number" step="0.1" name="load_percentage" required><br>
+  Repetitions Completed: <input type="number" name="repetitions_completed"><br>
+  Distance Completed (m): <input type="number" name="distance_completed"><br>
+  Time Elapsed (seconds): <input type="number" step="0.01" name="time_elapsed_seconds"><br>
+  Pace (min:sec, e.g., 2:15): <input type="text" name="pace"><br>
+  Average Splits: <input type="number" step="0.01" name="average_splits"><br>
+  Note: <textarea name="note"></textarea><br>
+
+  <button type="submit">Create</button>
+</form>
+<a href="{{ url_for('coach.dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

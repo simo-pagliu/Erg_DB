@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Workout Type</title>
+</head>
+<body>
+<h1>Create Workout Type</h1>
+<form method="post">
+  Name: <input type="text" name="name" required><br>
+  Mesocycle: 
+  <select name="mesocycle_id">
+    {% for mesocycle in mesocycles %}
+    <option value="{{ mesocycle.id }}">{{ mesocycle.name }}</option>
+    {% endfor %}
+  </select><br>
+  Repetitions Planned: <input type="number" name="repetitions_planned" required><br>
+  Distance Planned (m): <input type="number" name="distance_planned"><br>
+  Time Planned (seconds): <input type="number" name="time_planned_seconds" step="0.01"><br>
+  <button type="submit">Create</button>
+</form>
+<a href="{{ url_for('coach.dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
